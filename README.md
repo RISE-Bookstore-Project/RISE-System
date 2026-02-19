@@ -43,10 +43,13 @@ RISE is a centralized automated system designed to replace manual, paper-based w
 
 ![Site Map](https://github.com/user-attachments/assets/995529f6-2f4e-429d-95c9-3652ae8c25d6)
 ![Inventory Manager Wireframe](_Inventory Manager Screen.png)
+![Sales Terminal](Sales_Terminal_POS.png)
+![Ordering System](Manufacturer Ordering (Kanban) Layout.png)
 
 - [ ] **UI/UX:** Build Dashboard Layout & Inventory Modals.
 - [ ] **Backend:** Setup Database Schema & Book models.
-- [ ] **QA:** Define Test Cases for Inventory entry.
+- [ ] **QA:** Define Te
+- [ ] st Cases for Inventory entry.
 
 ### Week 3: Sprint 2 (Logic Integration)
 - [ ] **UI/UX:** Build Sales Terminal & Customer Order views.
