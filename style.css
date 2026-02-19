@@ -1,0 +1,63 @@
+/* RISE Project - Custom Design System 
+   Role: UX/UI Specialist
+   Description: Custom CSS to override Bootstrap defaults 
+*/
+
+:root {
+    --primary-blue: #2C3E50;    /* Midnight Blue */
+    --success-green: #27AE60;  /* Emerald Green */
+    --accent-orange: #E67E22;   /* Carrot Orange */
+    --cloud-white: #F8F9FA;    /* Background color */
+}
+
+/* Global Page Styling */
+body {
+    background-color: var(--cloud-white);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
+
+/* Navigation Bar Styling */
+.navbar {
+    background-color: var(--primary-blue) !important;
+    border-bottom: 4px solid var(--success-green); /* Visual accent line */
+}
+
+.navbar-brand {
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* Button Customization */
+.btn-success {
+    background-color: var(--success-green) !important;
+    border: none;
+    font-weight: 600;
+    transition: transform 0.2s;
+}
+
+.btn-success:hover {
+    transform: scale(1.05); /* Subtle pop effect on hover */
+}
+
+/* Status Badge for Rare/Special Items */
+.badge-rare {
+    background-color: var(--accent-orange);
+    color: white;
+    padding: 0.4em 0.8em;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    display: inline-block;
+}
+
+/* Inventory Table Styling */
+.table {
+    background: white;
+    border-radius: 10px;
+}
+
+.table thead {
+    background-color: #f1f3f5;
+    color: var(--primary-blue);
+}

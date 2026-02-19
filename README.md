@@ -2,7 +2,7 @@
 
 **Product Description 1: Bookstore Management System** *Modernizing the traditional rare book trade through digital transformation.*
 
----
+----
 
 ## 📖 Project Overview
 RISE is a centralized automated system designed to replace manual, paper-based workflows for rare bookstores. It integrates four core business pillars: **Accounting, Inventory Management, Manufacturer Ordering, and Customer Sales** into a single, high-performance platform.
@@ -27,7 +27,7 @@ RISE is a centralized automated system designed to replace manual, paper-based w
 
 ## 🛠 Tech Stack & Tools
 * **UI/UX:** HTML5, CSS3, Bootstrap 5, Figma
-* **Collaboration:** GitHub, Microsoft360
+* **Collaboration:** GitHub, Microsoft365
 * **Documentation:** Google Sheets (Sprint Planning)
 
 ---
@@ -40,9 +40,16 @@ RISE is a centralized automated system designed to replace manual, paper-based w
 - [x] GitHub Repository & Branching setup
 
 ### Week 2: Sprint 1 (Core Shell)
+
+![Site Map](https://github.com/user-attachments/assets/995529f6-2f4e-429d-95c9-3652ae8c25d6)
+![Inventory Manager Wireframe](_Inventory Manager Screen.png)
+![Sales Terminal](Sales_Terminal_POS.png)
+![Ordering System](Manufacturer Ordering (Kanban) Layout.png)
+
 - [ ] **UI/UX:** Build Dashboard Layout & Inventory Modals.
 - [ ] **Backend:** Setup Database Schema & Book models.
-- [ ] **QA:** Define Test Cases for Inventory entry.
+- [ ] **QA:** Define Te
+- [ ] st Cases for Inventory entry.
 
 ### Week 3: Sprint 2 (Logic Integration)
 - [ ] **UI/UX:** Build Sales Terminal & Customer Order views.
