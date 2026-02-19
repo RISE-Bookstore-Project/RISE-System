@@ -27,7 +27,7 @@ RISE is a centralized automated system designed to replace manual, paper-based w
 
 ## 🛠 Tech Stack & Tools
 * **UI/UX:** HTML5, CSS3, Bootstrap 5, Figma
-* **Collaboration:** GitHub, Microsoft360
+* **Collaboration:** GitHub, Microsoft365
 * **Documentation:** Google Sheets (Sprint Planning)
 
 ---
@@ -40,6 +40,10 @@ RISE is a centralized automated system designed to replace manual, paper-based w
 - [x] GitHub Repository & Branching setup
 
 ### Week 2: Sprint 1 (Core Shell)
+
+![Site Map](https://github.com/user-attachments/assets/995529f6-2f4e-429d-95c9-3652ae8c25d6)
+![Inventory Manager Wireframe](_Inventory Manager Screen.png)
+
 - [ ] **UI/UX:** Build Dashboard Layout & Inventory Modals.
 - [ ] **Backend:** Setup Database Schema & Book models.
 - [ ] **QA:** Define Test Cases for Inventory entry.
