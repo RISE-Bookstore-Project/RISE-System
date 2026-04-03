@@ -1,63 +1,26 @@
-/* RISE Project - Custom Design System 
-   Role: UX/UI Specialist
-   Description: Custom CSS to override Bootstrap defaults 
-*/
-
-:root {
-    --primary-blue: #2C3E50;    /* Midnight Blue */
-    --success-green: #27AE60;  /* Emerald Green */
-    --accent-orange: #E67E22;   /* Carrot Orange */
-    --cloud-white: #F8F9FA;    /* Background color */
+#login-container {
+    max-width: 300px;
+    margin: 100px auto;
+    text-align: center;
 }
 
-/* Global Page Styling */
-body {
-    background-color: var(--cloud-white);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #333;
+#login-container input {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 8px;
 }
 
-/* Navigation Bar Styling */
-.navbar {
-    background-color: var(--primary-blue) !important;
-    border-bottom: 4px solid var(--success-green); /* Visual accent line */
+#login-container button {
+    padding: 10px;
+    width: 100%;
 }
 
-.navbar-brand {
-    font-weight: 700;
-    letter-spacing: 1px;
+.error {
+    color: red;
 }
 
-/* Button Customization */
-.btn-success {
-    background-color: var(--success-green) !important;
-    border: none;
-    font-weight: 600;
-    transition: transform 0.2s;
-}
-
-.btn-success:hover {
-    transform: scale(1.05); /* Subtle pop effect on hover */
-}
-
-/* Status Badge for Rare/Special Items */
-.badge-rare {
-    background-color: var(--accent-orange);
-    color: white;
-    padding: 0.4em 0.8em;
-    border-radius: 50px;
-    font-size: 0.8rem;
-    font-weight: bold;
-    display: inline-block;
-}
-
-/* Inventory Table Styling */
-.table {
-    background: white;
-    border-radius: 10px;
-}
-
-.table thead {
-    background-color: #f1f3f5;
-    color: var(--primary-blue);
+#dashboard {
+    text-align: center;
+    margin-top: 50px;
 }
