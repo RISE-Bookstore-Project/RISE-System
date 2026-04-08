@@ -24,3 +24,25 @@
     text-align: center;
     margin-top: 50px;
 }
+.auth-card {
+    max-width: 420px;
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+}
+
+.status-badge {
+    background-color: var(--accent-orange);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+}
+
+#roleBadge {
+    padding: 0.5rem 0.75rem;
+}
+
+#permissionMessage {
+    border-left: 4px solid var(--primary-blue);
+}
