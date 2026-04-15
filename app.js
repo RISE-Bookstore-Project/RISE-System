@@ -164,7 +164,58 @@ function seedInventory() {
         }
     ];
 }
+function loadTransactions() {
+    try {
+        const raw = localStorage.getItem(TRANSACTIONS_KEY);
+        if (!raw) return [];
+        const parsed = JSON.parse(raw);
+        return Array.isArray(parsed) ? parsed : [];
+    } catch {
+        return [];
+    }
+}
 
+function saveTransactions(transactions) {
+    localStorage.setItem(TRANSACTIONS_KEY, JSON.stringify(transactions));
+}
+
+function createFinancialTransaction({
+    transactionType,
+    accountCategory,
+    description,
+    amount,
+    taxAmount = 0,
+    paymentMethod = "N/A",
+    status = "Posted",
+    referenceNumber = "",
+    relatedParty = "Customer",
+    items = []
+}) {
+    return {
+        transactionId: `TX-${Date.now()}`,
+        transactionDate: new Date().toISOString(),
+        transactionType,      // sale, refund, expense, supplier_order, adjustment
+        accountCategory,      // revenue, expense, inventory, payable
+        description,
+        referenceNumber,
+        amount: Number(amount),
+        taxAmount: Number(taxAmount),
+        totalAmount: Number(amount) + Number(taxAmount),
+        paymentMethod,
+        status,
+        relatedParty,
+        createdBy: currentUser ? currentUser.username : "system",
+        items
+    };
+}
+
+function recordTransaction(transactionData) {
+    const transactions = loadTransactions();
+    const newTransaction = createFinancialTransaction(transactionData);
+    transactions.unshift(newTransaction);
+    saveTransactions(transactions);
+    renderTransactions();
+}
 // ---------- AUTH ----------
 async function login() {
     const username = usernameInput.value.trim();
@@ -235,6 +286,7 @@ function showDashboard() {
 
     applyRoleUI();
     renderInventory();
+    renderTransactions();
 }
 
 function applyRoleUI() {
@@ -327,7 +379,47 @@ function renderRow(book) {
         </tr>
     `;
 }
+function renderTransactions() {
+    if (!transactionTbody || !accountingSummary) return;
 
+    const transactions = loadTransactions();
+
+    if (transactions.length === 0) {
+        transactionTbody.innerHTML = `
+            <tr>
+                <td colspan="7" class="text-center py-4">No transactions recorded yet.</td>
+            </tr>
+        `;
+        accountingSummary.textContent = "Revenue: $0.00 | Expenses: $0.00 | Net: $0.00";
+        return;
+    }
+
+    let totalRevenue = 0;
+    let totalExpenses = 0;
+
+    transactionTbody.innerHTML = transactions.map(tx => {
+        if (tx.accountCategory === "revenue") {
+            totalRevenue += tx.totalAmount;
+        } else if (tx.accountCategory === "expense") {
+            totalExpenses += tx.totalAmount;
+        }
+
+        return `
+            <tr>
+                <td>${escapeHtml(tx.transactionId)}</td>
+                <td>${new Date(tx.transactionDate).toLocaleString()}</td>
+                <td>${escapeHtml(tx.transactionType)}</td>
+                <td>${escapeHtml(tx.description)}</td>
+                <td>${escapeHtml(tx.accountCategory)}</td>
+                <td>${formatMoney(tx.totalAmount)}</td>
+                <td>${escapeHtml(tx.status)}</td>
+            </tr>
+        `;
+    }).join("");
+
+    accountingSummary.textContent =
+        `Revenue: ${formatMoney(totalRevenue)} | Expenses: ${formatMoney(totalExpenses)} | Net: ${formatMoney(totalRevenue - totalExpenses)}`;
+}
 // ---------- CRUD ----------
 function openAddModal() {
     if (!requirePermission("canAdd")) {
@@ -484,6 +576,30 @@ function completePurchase(bookIdValue, purchaseQty) {
             ? { ...item, quantity: item.quantity - qty }
             : item
     );
+
+    const subtotal = book.price * qty;
+    const taxAmount = subtotal * 0.08;
+
+    recordTransaction({
+        transactionType: "sale",
+        accountCategory: "revenue",
+        description: `${book.title} sale (${qty} copy/copies)`,
+        amount: subtotal,
+        taxAmount,
+        paymentMethod: "In Store",
+        status: "Posted",
+        referenceNumber: `SALE-${book.id.slice(0, 8)}-${Date.now()}`,
+        relatedParty: "Customer",
+        items: [
+            {
+                bookId: book.id,
+                title: book.title,
+                isbn: book.isbn,
+                quantity: qty,
+                unitPrice: book.price
+            }
+        ]
+    });
 
     saveInventory();
     renderInventory();
