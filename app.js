@@ -1,6 +1,7 @@
 const STORAGE_KEY = "rise_inventory_v2";
 const USERS_KEY = "rise_users_v1";
 const SESSION_KEY = "rise_session_v1";
+const TRANSACTIONS_KEY = "rise_transactions_v1";
 
 // ---------- DOM ----------
 const loginSection = document.getElementById("loginSection");
@@ -38,6 +39,8 @@ const purchaseBookId = document.getElementById("purchaseBookId");
 const purchaseBookTitle = document.getElementById("purchaseBookTitle");
 const purchaseQtyInput = document.getElementById("purchaseQtyInput");
 const availableQtyText = document.getElementById("availableQtyText");
+const transactionTbody = document.getElementById("transactionTbody");
+const accountingSummary = document.getElementById("accountingSummary");
 
 // ---------- STATE ----------
 let inventory = loadInventory();
