@@ -66,25 +66,28 @@
 
         <div id="permissionMessage" class="alert alert-info py-2 d-none"></div>
 
-        <div class="card shadow-sm">
-            <div class="card-body p-0">
-                <table class="table table-hover mb-0 align-middle">
-                    <thead class="table-light">
-                        <tr>
-                            <th>Image</th>
-                            <th>Title & Author</th>
-                            <th>ISBN</th>
-                            <th>Condition</th>
-                            <th>Price</th>
-                            <th>Qty</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody id="inventoryTbody"></tbody>
-                </table>
+              <div class="card shadow-sm mt-4">
+            <div class="card-body">
+                <h4 class="mb-3">Accounting Transactions</h4>
+                <p id="accountingSummary" class="text-muted mb-3">No transactions recorded yet.</p>
+                <div class="table-responsive">
+                    <table class="table table-striped align-middle mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Transaction ID</th>
+                                <th>Date</th>
+                                <th>Type</th>
+                                <th>Description</th>
+                                <th>Category</th>
+                                <th>Total</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="transactionTbody"></tbody>
+                    </table>
+                </div>
             </div>
         </div>
-    </div>
 </div>
 
 <!-- ADD / EDIT BOOK MODAL -->
